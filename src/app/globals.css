@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  @layer base {
+    :root {
+      --background: #F9C200;
+      --secondary-background: #FAE39C;
+      --foreground: #2E283F;
+
+      --card: transparent;
+      --card-foreground: #2E283F;
+
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: #ECEBEA;
+
+      --secondary: 210 40% 96.1%;
+      --secondary-foreground: 222.2 47.4% 11.2%;
+
+      --muted: 210 40% 96.1%;
+      --muted-foreground: 222 22% 20%;
+
+      --accent: rgba(255,255,255,0.4);
+      --accent-foreground: 222.2 47.4% 11.2%;
+
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+
+      --border: #2E283F;
+      --input: #2E283F;
+      --ring: #2E283F;
+
+      --radius: 0.5rem;
+
+      --danger: #98242B;
+      --danger-background: #F3505A;
+      
+      --success: #638A55;
+      --success-background: #CDDB86;
+    }
+  }
+
+  @layer base {
+    * {
+      @apply border-border;
+    }
+    body {
+      @apply bg-background text-foreground;
+    }
+  }
+
+  @layer base {
+    input[type="number"].hide-arrow::-webkit-inner-spin-button,
+    input[type="number"].hide-arrow::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type="number"].hide-arrow{
+      appearance: textfield;
+    }
+  }
