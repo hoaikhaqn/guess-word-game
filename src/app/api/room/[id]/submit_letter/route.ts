@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/db"
 import Rooms, { RoomDocument } from "@/models/rooms"
+import _ from "lodash"
 import { NextRequest, NextResponse } from "next/server"
 
 export const PUT = async (request: NextRequest, { params }: { params: { id: string } }) => {
@@ -13,9 +14,11 @@ export const PUT = async (request: NextRequest, { params }: { params: { id: stri
         const round = room.current_round_number
         const rounds = room.rounds
         const players = room.players
+
         if (players[player_id]) {
           // If player submit a letter
           if (letter) {
+            // UPDATE CURRENT ROUND & PLAYER'S STATE
             rounds[round].guessed_letters.push(letter)
             // Check letter be sumitted. Do it have correct ?
             if (rounds[round].correct_letters.includes(letter)) {
@@ -37,7 +40,22 @@ export const PUT = async (request: NextRequest, { params }: { params: { id: stri
           }
           players[player_id].guess_count++
         }
-        const data_updated = await Rooms.findOneAndUpdate({ room_id }, { rounds, players }, { new: true })
+
+        // SWITCH TURN
+        let current_turn_player_id = room?.current_turn_player_id
+        if(!rounds[round].winner_player_id){
+          const next_player_id = _.chain(players)
+          .map((value, key) => ({ key, ...value }))
+          .filter(p => p.player_health > 0)
+          .sortBy(["guess_count", "order"])
+          .head()
+          .value().player_id
+          current_turn_player_id = next_player_id
+        }else{
+          players[player_id].guess_count--
+        }
+
+        const data_updated = await Rooms.findOneAndUpdate({ room_id }, { rounds, players, current_turn_player_id }, { new: true })
 
         return new NextResponse(JSON.stringify(data_updated), { status: 200 })
       }

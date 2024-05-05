@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   async headers() {
     return [
@@ -22,13 +23,13 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
-      },
-    ],
+        hostname: "**"
+      }
+    ]
   },
   reactStrictMode: false,
   env: {
-    DOMAIN: "https://guess-word-game-eight.vercel.app",
+    DOMAIN: process.env.DOMAIN,
     SOCKET_SERVER: "https://socket96-0c82422cf23b.herokuapp.com",
     HOSTNAME: "guess-word-game-eight.vercel.app",
     PORT: "3000",

@@ -34,12 +34,13 @@ export default function PlaygroundTemplate({}: Props) {
       setIsRequesting(true)
       clearInterval(intervalRef.current)
       dispatch(submitLetter({ room_id: room.room_id, letter: key, player_id: self.id }))
-      setTimeout(() => {
-        if (room.room_id) {
-          dispatch(changeTurns({ room_id: room.room_id }))
-          setIsRequesting(false)
-        }
-      }, 1000)
+      setIsRequesting(false)
+      // setTimeout(() => {
+      //   if (room.room_id) {
+      //     dispatch(changeTurns({ room_id: room.room_id }))
+      //     setIsRequesting(false)
+      //   }
+      // },300)
     }
   }
 
@@ -77,13 +78,6 @@ export default function PlaygroundTemplate({}: Props) {
     clearInterval(intervalRef.current)
     setCountdown(30)
   }
-
-  // useEffect(() => {
-  //   // Load first round data
-  //   if (room && Object.keys(room?.rounds).length === 0) {
-  //     dispatch(getRoomInfo(room.room_id))
-  //   }
-  // }, [room])
 
   useEffect(() => {
     if (isMyTurn) {
