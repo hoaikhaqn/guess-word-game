@@ -58,7 +58,7 @@ export default function RoomLayout({ params, children }: Props & PropsWithChildr
   if (roomError) {
     return (
       <div>
-        <h2 className="text-4xl mb-5 font-bold text-foreground uppercase">Opps! Looks like you're lost.</h2>
+        <h2 className="text-4xl mb-5 font-bold text-foreground uppercase">Opps! Looks like you are lost.</h2>
         <Link className="text-4xl mb-5 font-bold underline" href={routes.home}>
           Get back
         </Link>

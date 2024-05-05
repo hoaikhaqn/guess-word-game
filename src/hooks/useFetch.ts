@@ -3,14 +3,14 @@ import { useEffect, useState } from "react"
 
 const useFetch = <T>(configs: fetchConfigs) => {
     const [data, setData] = useState<T>()
-    const [error, setError] = useState()
+    const [error, setError] = useState<boolean>()
     const [loading, setLoading] = useState(false)
   
     const fetchData = async () => {
       setLoading(true)
-      const { data, error } = await fetchAPI(configs)
+      const { data, error } = await fetchAPI<T>(configs)
       if (error) {
-        setError(error)
+        setError(true)
       }
       if (data) {
         setData(data)
@@ -20,7 +20,7 @@ const useFetch = <T>(configs: fetchConfigs) => {
   
     useEffect(() => {
       !data && fetchData()
-    }, [])
+    }, [configs.url])
   
     const refetch = () => {
       fetchData()

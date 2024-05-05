@@ -108,5 +108,5 @@ const InputNumber = React.forwardRef<HTMLInputElement, Props>(
     )
   }
 )
-
+InputNumber.displayName = "InputNumber";
 export default InputNumber

@@ -1,6 +1,5 @@
 import { connectDB } from "@/lib/db"
 import library from "@/models/library"
-import room_players from "@/models/room_players"
 import { NextRequest, NextResponse } from "next/server"
 
 export const POST = async (request: NextRequest) => {

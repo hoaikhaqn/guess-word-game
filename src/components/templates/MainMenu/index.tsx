@@ -82,7 +82,7 @@ export default function MainMenu() {
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>Find room</DialogTitle>
-              <DialogDescription>Enter your room's id to join to the room.</DialogDescription>
+              <DialogDescription>Enter your room&lsquo; id to join to the room.</DialogDescription>
             </DialogHeader>
             <Form {...form}>
               <form className="w-full" onSubmit={form.handleSubmit(handleFindRoom)}>

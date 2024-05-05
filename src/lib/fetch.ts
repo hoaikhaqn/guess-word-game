@@ -25,7 +25,7 @@ const fetchAPI = async <T>({ method, url, payload, headers, next, cache }: fetch
     }
     return { data, error: null }
   } catch (error) {
-    return { data: null, error: error }
+    return { data: null, error: true }
   }
 }
 

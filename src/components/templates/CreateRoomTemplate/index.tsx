@@ -81,7 +81,7 @@ export default function CreateRoomTemplate() {
               </div>
               <div className="table-row">
                 <div className="table-cell py-2">
-                  <span className="text-lg font-bold">Players' health:</span>
+                  <span className="text-lg font-bold">Players&lsquo; health:</span>
                 </div>
                 <div className="table-cell py-2 text-right">
                   <FormField
@@ -99,7 +99,7 @@ export default function CreateRoomTemplate() {
               </div>
               <div className="table-row">
                 <div className="table-cell py-2">
-                  <span className="text-lg font-bold">Round's score:</span>
+                  <span className="text-lg font-bold">Round&lsquo; score:</span>
                 </div>
                 <div className="table-cell py-2 text-right">
                   <FormField
