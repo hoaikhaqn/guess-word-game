@@ -18,6 +18,14 @@ const nextConfig = {
       }
     ]
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
   reactStrictMode: false,
   env: {
     DOMAIN: "https://guess-word-game-eight.vercel.app",

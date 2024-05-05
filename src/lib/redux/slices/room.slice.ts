@@ -219,18 +219,22 @@ export const RoomSlice = createSlice({
       const room = action.payload
       state.data = room
       const socket = new SocketIO()
+      console.log("chosenLetter");
+      
       socket.sc.emit("updateRoom", { room_id: room.room_id })
     })
     builder.addCase(submitLetter.fulfilled, (state, action) => {
       const room = action.payload
       state.data = room
       const socket = new SocketIO()
+      console.log("submitLetter");
       socket.sc.emit("updateRoom", { room_id: room.room_id })
     }),
       builder.addCase(changeTurns.fulfilled, (state, action) => {
         const room = action.payload
         state.data = room
         const socket = new SocketIO()
+        console.log("changeTurns");
         socket.sc.emit("updateRoom", { room_id: room.room_id })
       })
   }

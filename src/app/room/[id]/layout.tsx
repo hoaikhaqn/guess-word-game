@@ -34,6 +34,8 @@ export default function RoomLayout({ params, children }: Props & PropsWithChildr
       dispatch(leaveRoom({ room_id: params.id, player_id: payload.player_id }))
     })
     socket.sc.on("roomUpdated", () => {
+      console.log("RoomUpdated GET INFO");
+      
       dispatch(getRoomInfo(params.id))
     })
     return () => {
@@ -50,7 +52,9 @@ export default function RoomLayout({ params, children }: Props & PropsWithChildr
       if (self) {
         dispatch(joinRoom({ room_id: room.room_id, player_id: self.id, player_name: self.name }))
       }
-    } else {
+    }
+    if(!room){
+      console.log("LAYOUT GET INFO");
       dispatch(getRoomInfo(params.id))
     }
   }, [room?.room_id])

@@ -2,6 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import React from "react"
 import { StarFilledIcon } from "@radix-ui/react-icons"
+import Image from "next/image"
 
 type Props = {
   data: {
@@ -16,7 +17,7 @@ export default function PlayerItem({ data, host = false }: Props) {
     <div className="flex flex-col gap-2 justify-center items-center">
       <div className="relative">
         <Avatar className="relative z-10 w-16 h-16 bg-slate-800">
-          <AvatarImage src={`https://gravatar.com/avatar/${data.player_id}?s=400&d=robohash`} alt="@shadcn" />
+          <Image src={`https://gravatar.com/avatar/${data.player_id}?s=80&d=robohash`} loading="lazy" width={80} height={80} alt="Avatar" />
           <AvatarFallback>{data.player_name}</AvatarFallback>
         </Avatar>
         {host && (

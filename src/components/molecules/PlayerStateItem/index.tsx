@@ -2,6 +2,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import classNames from "classnames"
+import Image from "next/image"
 import React, { useEffect, useState } from "react"
 
 export type PlayerData = {
@@ -40,7 +41,7 @@ export default function PlayerStateItem({ playerData, keySelected, thinking = fa
     <div className="flex flex-col gap-2 justify-center items-center">
       <div className="relative">
         <Avatar className="w-16 h-16 bg-slate-800">
-          {id && <AvatarImage src={`https://gravatar.com/avatar/${id}?s=400&d=robohash`} alt="@shadcn" />}
+          {id &&  <Image src={`https://gravatar.com/avatar/${id}?s=80&d=robohash`} loading="lazy" width={80} height={80} alt="Avatar" />}
           <AvatarFallback>{name}</AvatarFallback>
         </Avatar>
         {(keySelected || thinking) && (

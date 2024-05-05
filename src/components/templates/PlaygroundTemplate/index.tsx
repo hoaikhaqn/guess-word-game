@@ -78,21 +78,12 @@ export default function PlaygroundTemplate({}: Props) {
     setCountdown(30)
   }
 
-  useEffect(() => {
-    const socket = new SocketIO()
-    socket.sc.on("roomUpdated", async () => {
-      if (room) {
-        dispatch(getRoomInfo(room.room_id))
-      }
-    })
-  }, [])
-
-  useEffect(() => {
-    // Load first round data
-    if (room && Object.keys(room?.rounds).length === 0) {
-      dispatch(getRoomInfo(room.room_id))
-    }
-  }, [room])
+  // useEffect(() => {
+  //   // Load first round data
+  //   if (room && Object.keys(room?.rounds).length === 0) {
+  //     dispatch(getRoomInfo(room.room_id))
+  //   }
+  // }, [room])
 
   useEffect(() => {
     if (isMyTurn) {

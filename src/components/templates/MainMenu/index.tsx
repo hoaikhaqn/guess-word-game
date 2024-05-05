@@ -15,6 +15,7 @@ import routes from "@/config/routes"
 import { createGuess, getUserInfo } from "@/lib/utils"
 import { IUser } from "@/types/user"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { log } from "console"
 import { useRouter } from "next/navigation"
 import React, { useLayoutEffect, useMemo, useState } from "react"
 import { useForm } from "react-hook-form"
@@ -49,18 +50,18 @@ export default function MainMenu() {
   }
 
   const handleFindRoom = () => {
-    console.log(form.getValues());
-    
+    console.log(form.getValues())
+
     const roomId = form.getValues("room_id")
     if (roomId) router.push(routes.lobby(roomId))
   }
 
   useLayoutEffect(() => {
-    if (typeof window !== "undefined") {
-      const userInfo = getUserInfo()
-      if (userInfo) {
-        setUser(userInfo)
-      }
+    const userInfo = getUserInfo()
+    console.log(userInfo)
+
+    if (userInfo) {
+      setUser(userInfo)
     }
   }, [])
 

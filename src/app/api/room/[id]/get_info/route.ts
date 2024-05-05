@@ -2,6 +2,9 @@ import { connectDB } from "@/lib/db"
 import rooms from "@/models/rooms"
 import { NextRequest, NextResponse } from "next/server"
 
+
+export const preferredRegion = ['ap-southeast-1','ap-east-1','ap-northeast-2','ap-northeast-3'];
+
 export const GET = async (request: NextRequest, { params }: { params: { id: string } }) => {
   try {
     await connectDB()
