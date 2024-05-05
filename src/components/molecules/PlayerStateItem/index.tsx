@@ -1,6 +1,7 @@
 "use client"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
+import { getUserInfo } from "@/lib/utils"
 import classNames from "classnames"
 import Image from "next/image"
 import React, { useEffect, useState } from "react"
@@ -21,6 +22,7 @@ type Props = {
 
 export default function PlayerStateItem({ playerData, keySelected, thinking = false, maxHealth = 100 }: Props) {
   const { id, name, health, score } = playerData
+  const self = getUserInfo()
   // const [remainingTime, setRemainingTime] = useState(thinkingTime)
 
   // useEffect(() => {
@@ -39,9 +41,17 @@ export default function PlayerStateItem({ playerData, keySelected, thinking = fa
 
   return (
     <div className="flex flex-col gap-2 justify-center items-center">
-      <div className="relative">
-        <Avatar className="w-16 h-16 bg-slate-800">
-          {id &&  <Image src={`https://gravatar.com/avatar/${id}?s=80&d=robohash`} loading="lazy" width={80} height={80} alt="Avatar" />}
+      <div className={classNames("relative", { "outline outline-2 outline-offset-2 rounded-full": thinking })}>
+        <Avatar className="w-16 h-16 bg-slate-800 border-2 border-solid border-foreground">
+          {id && (
+            <Image
+              src={`https://gravatar.com/avatar/${id}?s=80&d=robohash`}
+              loading="lazy"
+              width={80}
+              height={80}
+              alt="Avatar"
+            />
+          )}
           <AvatarFallback>{name}</AvatarFallback>
         </Avatar>
         {(keySelected || thinking) && (
@@ -51,18 +61,23 @@ export default function PlayerStateItem({ playerData, keySelected, thinking = fa
             </div>
           </div>
         )}
-        {/* <div className="absolute bottom-[-7px] left-0 right-0 mx-auto w-[20px] h-[20px] rounded-full bg-danger">
-          <div className="flex w-full h-full justify-center items-center">
-            <span className="text-white text-[12px] font-medium">{health}</span>
+        {self.id === id && (
+          <div className="absolute bottom-[-7px] left-0 right-0 mx-auto w-[35px] h-[15px] rounded-md bg-foreground">
+            <div className="flex w-full h-full justify-center items-center">
+              <span className="text-background text-[11px]">You</span>
+            </div>
           </div>
-        </div> */}
+        )}
       </div>
       <Badge variant="outline" className="relative border-2 overflow-hidden">
         {health && maxHealth && (
-          <div className={classNames("absolute left-0 h-full z-10",{
-            "bg-success": health / maxHealth * 100 >= 50,
-            "bg-danger": health / maxHealth * 100 < 50
-          })} style={{ width: `${health / maxHealth * 100}%` }}></div>
+          <div
+            className={classNames("absolute left-0 h-full z-10", {
+              "bg-success": (health / maxHealth) * 100 >= 30,
+              "bg-danger": (health / maxHealth) * 100 < 30
+            })}
+            style={{ width: `${(health / maxHealth) * 100}%` }}
+          ></div>
         )}
         <span className="relative z-20">
           {name}: <b className="ml-1">{score}</b>

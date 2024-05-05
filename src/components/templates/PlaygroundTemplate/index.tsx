@@ -35,12 +35,6 @@ export default function PlaygroundTemplate({}: Props) {
       clearInterval(intervalRef.current)
       dispatch(submitLetter({ room_id: room.room_id, letter: key, player_id: self.id }))
       setIsRequesting(false)
-      // setTimeout(() => {
-      //   if (room.room_id) {
-      //     dispatch(changeTurns({ room_id: room.room_id }))
-      //     setIsRequesting(false)
-      //   }
-      // },300)
     }
   }
 
@@ -109,7 +103,7 @@ export default function PlaygroundTemplate({}: Props) {
       if (player_lowest_health?.player_health <= 0 && player_lowest_health.player_id === self?.id) {
         toast({
           description: "You lose!",
-          duration: 10000
+          duration: 2000
         })
       }
     }
