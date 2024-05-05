@@ -20,9 +20,9 @@ const nextConfig = {
   },
   reactStrictMode: false,
   env: {
-    DOMAIN: "http://192.168.1.8:3000",
+    DOMAIN: "https://guess-word-game-eight.vercel.app",
     SOCKET_SERVER: "https://socket96-0c82422cf23b.herokuapp.com",
-    HOSTNAME: "192.168.1.8",
+    HOSTNAME: "guess-word-game-eight.vercel.app",
     PORT: "3000",
     MONGODB_URI: "mongodb+srv://hoaikhaqn1996:0ZyAQ32P8gthP40Z@guesswordgame.ltnxak6.mongodb.net/"
   }
