@@ -11,7 +11,9 @@ type Props = {
 export default function GuessBox({ size = 40, word = "?", wordSize = 20, guessedLetters }: Props) {
   return (
     <div
-      className={classNames(`inline-flex justify-center items-center bg-secondaryBackground rounded-md`)}
+      className={classNames(`inline-flex justify-center items-center bg-secondaryBackground rounded-md`,{
+        "animate-pop-in border-foreground border-2 border-solid": guessedLetters?.includes(word)
+      })}
       style={{
         width: size,
         height: size,
