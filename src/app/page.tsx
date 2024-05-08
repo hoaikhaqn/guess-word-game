@@ -1,4 +1,5 @@
 import MainMenu from "@/components/templates/MainMenu";
+import MessegerFB from "@/lib/messenger";
 
 export default function Home() {
 
@@ -9,6 +10,7 @@ export default function Home() {
         <span className="text-4xl px-3 py-1 font-bold text-white uppercase bg-foreground rounded-xl">The game</span>
       </div>
       <MainMenu/>
+      <MessegerFB />
     </main>
   )
 }
