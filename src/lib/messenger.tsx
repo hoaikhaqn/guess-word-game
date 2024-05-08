@@ -5,7 +5,7 @@ import { Comments, CustomChat, FacebookProvider, Like, ShareButton, useShare } f
 export default function MessegerFB() {
   return (
     <FacebookProvider appId="102712775611937">
-       <Comments href="http://www.facebook.com" />
+      <Like href="http://www.facebook.com" colorScheme="dark" showFaces share />
     </FacebookProvider>
   )
 }
